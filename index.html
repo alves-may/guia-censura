@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia: Censura de Dados PII</title>
+    <!-- Carrega o Tailwind CSS para estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carrega a biblioteca de ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-primary': '#6d28d9', // Roxo
+                        'brand-secondary': '#ede9fe',
+                        'brand-dark': '#4c1d95',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Carrega a fonte Inter do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Estilos para os ícones Lucide */
+        [data-lucide] {
+            width: 1.1em;
+            height: 1.1em;
+            margin-right: 0.5em;
+            display: inline-block;
+            vertical-align: -0.2em;
+        }
+        /* Estilos para o accordion (FAQ) */
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .chevron {
+            transform: rotate(90deg);
+        }
+        .chevron {
+            transition: transform 0.2s;
+            margin-right: 0;
+        }
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <!-- Navegação Rápida -->
+    <nav class="sticky top-0 bg-white/80 backdrop-blur-md shadow-sm z-50 border-b border-gray-200">
+        <div class="container max-w-5xl mx-auto px-4 py-3 flex justify-center items-center space-x-2 sm:space-x-4">
+            <a href="#ferramenta1" class="text-sm sm:text-base font-medium text-gray-600 hover:text-brand-primary transition-all duration-200 flex items-center px-3 py-1 rounded-full hover:bg-slate-100">
+                <i data-lucide="magic-wand-2" class="w-4 h-4 sm:w-auto sm:h-auto"></i> <span class="ml-1 sm:ml-0">Censura de Dados</span>
+            </a>
+            <a href="#ferramenta2" class="text-sm sm:text-base font-medium text-gray-600 hover:text-brand-primary transition-all duration-200 flex items-center px-3 py-1 rounded-full hover:bg-slate-100">
+                <i data-lucide="magic-wand-2" class="w-4 h-4 sm:w-auto sm:h-auto"></i> <span class="ml-1 sm:ml-0">Censura do Kit Básico</span>
+            </a>
+            <a href="#faq" class="text-sm sm:text-base font-medium text-gray-600 hover:text-brand-primary transition-all duration-200 flex items-center px-3 py-1 rounded-full hover:bg-slate-100">
+                <i data-lucide="help-circle" class="w-4 h-4 sm:w-auto sm:h-auto"></i> <span class="ml-1 sm:ml-0">FAQ</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
+        
+        <!-- Cabeçalho -->
+        <header class="text-center pt-8 pb-12">
+            <h1 class="text-4xl font-bold mb-3 bg-gradient-to-r from-brand-primary to-brand-dark bg-clip-text text-transparent">Guia das Ferramentas de Censura de dados PII</h1>
+            <p class="text-xl text-gray-600">Seu passo a passo para configurar e usar os scripts de censura de dados no navegador.</p>
+        </header>
+
+        <!-- Contexto -->
+        <section class="mb-12 bg-white p-6 rounded-lg shadow-lg border border-slate-200 transition-all duration-300 hover:shadow-xl">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 flex items-center"><i data-lucide="book-open" class="text-brand-primary"></i>Contexto</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Este guia orienta a configuração e o uso de duas ferramentas de automação para censura de dados PII (Informações Pessoais Identificáveis) nos dossiês. O objetivo é reduzir o tempo gasto (TS) e os monitoramentos de QA neste item crítico.
+            </p>
+        </section>
+
+        <!-- Ferramenta 1 -->
+        <section id="ferramenta1" class="mb-12 scroll-mt-24">
+            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg border border-slate-200 transition-all duration-300 hover:shadow-xl">
+                <h2 class="text-3xl font-semibold text-brand-primary mb-2 flex items-center"><i data-lucide="magic-wand-2"></i>Censura de Dados</h2>
+                <p class="text-lg text-gray-600 mb-4">Censura dados sensíveis (CPF, Chave Pix, Telefones e E-mails dos Agentes).</p>
+                <div class="mb-4 inline-flex bg-blue-100 text-blue-800 font-medium px-4 py-2 rounded-full">
+                    <i data-lucide="map-pin"></i><strong>Onde usar:</strong>&nbsp;Widgets do Shuffle, Tristram e Zendesk.
+                </div>
+
+                <!-- Configuração Ferramenta 1 -->
+                <div class="mt-6 border-t pt-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Configuração</h3>
+                    <ol class="list-decimal list-outside space-y-6 text-gray-700 pl-5">
+                        <li>
+                            <strong>Abra o Gerenciador de Favoritos</strong>
+                            <p class="text-sm text-gray-600">No Chrome, vá em <code class="text-sm bg-gray-100 p-1 rounded">... (Três Pontos)</code> &gt; <code class="text-sm bg-gray-100 p-1 rounded">Favoritos</code> &gt; <code class="text-sm bg-gray-100 p-1 rounded">Gerenciador de favoritos</code>.</p>
+                        </li>
+                        <li>
+                            <strong>Adicione um Novo Favorito</strong>
+                            <p class="text-sm text-gray-600">Na página do gerenciador, clique nos <code class="text-sm bg-gray-100 p-1 rounded">... (Três Pontos)</code> no canto superior direito e escolha <code class="text-sm bg-gray-100 p-1 rounded">Adicionar novo favorito</code>.</p>
+                        </li>
+                        <li>
+                            <strong>Preencha os Campos</strong>
+                            <ul class="list-disc list-inside ml-4 mt-2 space-y-2">
+                                <li><strong>Nome:</strong>&nbsp;Digite <code class="text-sm bg-brand-secondary text-brand-dark p-1 rounded font-medium">Censurar Dados</code></li>
+                                <li><strong>URL:</strong>&nbsp;Copie o código abaixo e cole <strong>inteiramente</strong> neste campo.</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <!-- Bloco de Código 1 -->
+                    <div class="my-5">
+                        <label class="font-semibold text-gray-700">Código para o campo URL:</label>
+                        <div class="relative bg-gray-900 text-white p-4 rounded-md shadow-inner mt-2">
+                            <button class="copy-btn absolute top-3 right-3 bg-gray-700 hover:bg-gray-600 transition-colors text-white text-xs font-medium py-1 px-2 rounded"
+                                data-clipboard-target="#code-1">
+                                <i data-lucide="clipboard" class="w-4 h-4 mr-1"></i>
+                                <span class="relative top-0.5">Copiar</span>
+                            </button>
+                            <pre class="overflow-x-auto whitespace-pre-wrap break-all text-sm pr-16"><code id="code-1">javascript:(function(){const regras=[{regex:/(CPF\s*:)\s*(\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b)/gi,censura:%27$1 [CENSURADO]%27},{regex:/(\(\s*CNPJ\/CPF\s*\):)\s*(\b(?:\d{3}\.?\d{3}\.?\d{3}-?\d{2}|\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2})\b)/gi,censura:%27$1 [CENSURADO]%27},{regex:/(\[\{.*?:person.*?\}\s*:person\]:)\s*(\d{11})\b/gi,censura:%27$1 [CPF CENSURADO]%27},{regex:/(Telefone\s*:)\s*(\+\d{13})/gi,censura:%27$1 [TELEFONE CENSURADO]%27},{regex:/(Chave Pix Utilizada:).*/gi,censura:%27[CHAVE PIX CENSURADA]%27},{regex:/[a-zA-Z0-9._%+-]+@nubank\.com\.br/g,censura:%27[E-MAIL CENSURADO]%27}];let contador=0;document.querySelectorAll(%27body *:not(script):not(style)%27).forEach(function(el){el.childNodes.forEach(function(node){if(node.nodeType===3){let txtOrg=node.textContent;let txtMod=txtOrg;regras.forEach(regra=>{txtMod=txtMod.replace(regra.regex,regra.censura);});if(txtOrg!==txtMod){node.textContent=txtMod;contador++;}}});});alert(`Dados censurados em ${contador} locais diferentes.`);})();</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-50 border border-green-200 text-green-900 p-4 rounded-md mt-4" role="alert">
+                        <p class="font-bold flex items-center"><i data-lucide="check-circle"></i>Pronto!</p>
+                        <p class="mt-1">Salve o favorito. Certifique-se de que sua <strong>Barra de Favoritos</strong> está visível no navegador para fácil acesso.</p>
+                    </div>
+                </div>
+
+                <!-- Utilização Ferramenta 1 -->
+                <div class="mt-8 border-t pt-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Utilização (Dia-a-Dia)</h3>
+                    <ol class="list-decimal list-outside space-y-4 text-gray-700 pl-5">
+                        <li><strong>Acesse a Página:</strong>&nbsp;Navegue até a página do Shuffle, Tristram ou Zendesk onde os dados precisam ser censurados.</li>
+                        <li>
+                            <strong>Instrução Especial para Zendesk:</strong>
+                            <div class="bg-yellow-50 border border-yellow-200 text-yellow-900 p-4 rounded-md my-2" role="alert">
+                                <p class="font-bold flex items-center"><i data-lucide="alert-triangle"></i>Atenção no Zendesk</p>
+                                <p class="mt-1">Clique nos três pontos do e-mail &gt; <code class="text-sm">Imprimir</code>. Quando a janela de impressão do PDF abrir, <strong>feche-a</strong>. Só então clique no botão <code class="text-sm bg-gray-200 p-1 rounded">Censurar Dados</code>. Depois, pode salvar o PDF (Ctrl+P / Cmd+P).</p>
+                            </div>
+                        </li>
+                        <li><strong>Clique no Favorito:</strong>&nbsp;Clique no botão <code class="text-sm bg-brand-secondary text-brand-dark p-1 rounded font-medium">Censurar Dados</code> na sua barra de favoritos.</li>
+                        <li><strong>Veja o Resultado:</strong>&nbsp;Um alerta aparecerá informando quantos locais foram censurados.</li>
+                        <li>
+                            <strong>Confira o Resultado:</strong>
+                            <div class="bg-blue-50 border border-blue-200 text-blue-900 p-4 rounded-md my-2" role="alert">
+                                <p class="font-bold flex items-center"><i data-lucide="search"></i>Verificação Manual Obrigatória</p>
+                                <p class="mt-1">Sempre confira! Use <code class="text-sm bg-gray-200 p-1 rounded">Ctrl+F</code> (ou <code class="text-sm bg-gray-200 p-1 rounded">Cmd+F</code>) e pesquise por <code class="text-sm bg-gray-200 p-1 rounded">@</code> para garantir que nenhum e-mail de terceiro ficou sem censura. Se encontrar, censure manualmente.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ferramenta 2 -->
+        <section id="ferramenta2" class="mb-12 scroll-mt-24">
+            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg border border-slate-200 transition-all duration-300 hover:shadow-xl">
+                <h2 class="text-3xl font-semibold text-brand-primary mb-2 flex items-center">Censura do Kit Básico</h2>
+                <p class="text-lg text-gray-600 mb-4">Censura <strong>apenas e-mails @nubank.com.br</strong> na pré-visualização do Kit Básico.</p>
+                <div class="mb-4 inline-flex bg-blue-100 text-blue-800 font-medium px-4 py-2 rounded-full">
+                    <i data-lucide="map-pin"></i><strong>Onde usar:</strong>&nbsp;Apenas na tela de pré-visualização do Kit Básico (Shuffle).
+                </div>
+
+                <!-- Configuração Ferramenta 2 -->
+                <div class="mt-6 border-t pt-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Configuração (Setup Único)</h3>
+                    <ol class="list-decimal list-outside space-y-6 text-gray-700 pl-5">
+                        <li>
+                            <strong>Abra o Inspecionar</strong>
+                            <p class="text-sm text-gray-600">Em qualquer página, clique com o botão direito e escolha <code class="text-sm bg-gray-100 p-1 rounded">Inspecionar</code>.</p>
+                        </li>
+                        <li>
+                            <strong>Acesse "Fontes" (Sources)</strong>
+                            <p class="text-sm text-gray-600">Na janela do DevTools, procure a aba <code class="text-sm bg-gray-100 p-1 rounded">Fontes</code> (ou <code class="text-sm bg-gray-100 p-1 rounded">Sources</code>). Se não a vir, clique nas setas <code class="text-sm bg-gray-100 p-1 rounded">&gt;&gt;</code>.</p>
+                        </li>
+                        <li>
+                            <strong>Encontre "Snippets"</strong>
+                            <p class="text-sm text-gray-600">No painel esquerdo dentro de "Fontes", procure a aba <code class="text-sm bg-gray-100 p-1 rounded">Snippets</code>. Novamente, pode estar dentro das setas <code class="text-sm bg-gray-100 p-1 rounded">&gt;&gt;</code>.</p>
+                        </li>
+                        <li>
+                            <strong>Crie um Novo Snippet</strong>
+                            <p class="text-sm text-gray-600">Clique em <code class="text-sm bg-gray-100 p-1 rounded">+ Novo snippet</code>. Nomeie como <code class="text-sm bg-brand-secondary text-brand-dark p-1 rounded font-medium">Censura do Kit Básico</code>.</p>
+                        </li>
+                        <li>
+                            <strong>Cole o Código</strong>
+                             <div class="bg-yellow-50 border border-yellow-200 text-yellow-900 p-4 rounded-md my-2" role="alert">
+                                <p class="font-bold flex items-center"><i data-lucide="alert-triangle"></i>Permitir Colar</p>
+                                <p class="mt-1">O Chrome pode pedir para você digitar <code class="text-sm bg-gray-200 p-1 rounded">allow pasting</code> (ou <code class="text-sm bg-gray-200 p-1 rounded">permitir colar</code>) para autorizar a colagem. Faça isso se for solicitado.</p>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <!-- Bloco de Código 2 -->
+                    <div class="my-5">
+                        <label class="font-semibold text-gray-700">Código para o Snippet:</label>
+                        <div class="relative bg-gray-900 text-white p-4 rounded-md shadow-inner mt-2">
+                            <button class="copy-btn absolute top-3 right-3 bg-gray-700 hover:bg-gray-600 transition-colors text-white text-xs font-medium py-1 px-2 rounded"
+                                data-clipboard-target="#code-2">
+                                <i data-lucide="clipboard" class="w-4 h-4 mr-1"></i>
+                                <span class="relative top-0.5">Copiar</span>
+                            </button>
+                            <pre class="overflow-x-auto text-sm"><code id="code-2">
+console.log("Iniciando censura de e-mails @nubank.com.br..."); 
+const regraNubank = { 
+    regex: /[a-zA-Z0-9._%+-]+@nubank\.com\.br/g, 
+    censura: '[E-MAIL NUBANK CENSURADO]' 
+}; 
+let contador = 0; 
+document.querySelectorAll('body *:not(script):not(style)').forEach(function(el) { 
+    if (el.children.length === 0 && el.textContent) { 
+        let textoOriginal = el.textContent; 
+        let textoModificado = textoOriginal.replace(regraNubank.regex, regraNubank.censura); 
+
+        if (textoOriginal !== textoModificado) { 
+            el.textContent = textoModificado; 
+            contador++; 
+        } 
+    } 
+}); 
+if (contador > 0) { 
+    console.log(`%cSUCESSO! ${contador} e-mail(s) do Nubank foram censurados.`, "color: lightgreen;"); 
+} else { 
+    console.log("Nenhum e-mail do @nubank.com.br encontrado na página."); 
+} 
+                            </code></pre>
+                        </div>
+                    </div>
+
+                    <ol class="list-decimal list-outside space-y-6 text-gray-700 pl-5" start="6">
+                        <li>
+                            <strong>Salve o Snippet</strong>
+                            <p class="text-sm text-gray-600">Pressione <code class="text-sm bg-gray-100 p-1 rounded">Ctrl + S</code> (ou <code class="text-sm bg-gray-100 p-1 rounded">Cmd + S</code> no Mac). O asterisco <code class="text-sm bg-gray-100 p-1 rounded">*</code> ao lado do nome deve desaparecer.</p>
+                        </li>
+                    </ol>
+
+                    <div class="bg-green-50 border border-green-200 text-green-900 p-4 rounded-md mt-4" role="alert">
+                        <p class="font-bold flex items-center"><i data-lucide="check-circle"></i>Pronto!</p>
+                        <p class="mt-1">Seu snippet está salvo e pronto para ser usado.</p>
+                    </div>
+                </div>
+
+                <!-- Utilização Ferramenta 2 -->
+                <div class="mt-8 border-t pt-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Utilização (Dia-a-Dia)</h3>
+                    <ol class="list-decimal list-outside space-y-4 text-gray-700 pl-5">
+                        <li><strong>Carregue a Página:</strong>&nbsp;Vá para a página de pré-visualização do Kit Básico.</li>
+                        <li><strong>Abra o Inspecionar:</strong>&nbsp;Clique com o botão direito na página e escolha <code class="text-sm bg-gray-100 p-1 rounded">Inspecionar</code>.</li>
+                        <li>
+                            <strong>Abra o Menu de Comando:</strong>
+                            <p class="mt-1">Pressione <code class="text-sm bg-gray-100 p-1 rounded">Cmd + Shift + P</code> (Mac) ou <code class="text-sm bg-gray-100 p-1 rounded">Ctrl + Shift + P</code> (Windows).</p>
+                        </li>
+                        <li>
+                            <strong>Digite o Comando:</strong>
+                            <p class="mt-1">Uma barra de busca aparecerá. Digite um ponto de exclamação <code class="text-sm bg-gray-100 p-1 rounded">!</code> seguido do nome do seu snippet.
+                            <br>
+                            Exemplo: <code class="text-sm bg-brand-secondary text-brand-dark p-1 rounded font-medium">!Censura do Kit Básico</code></p>
+                        </li>
+                        <li>
+                            <strong>Execute:</strong>
+                            <p class="mt-1">Clique no nome do snippet que apareceu na lista. Ele será executado imediatamente.</p>
+                        </li>
+                        <li>
+                            <strong>Confira o Console:</strong>
+                            <p class="mt-1">Na aba <code class="text-sm bg-gray-100 p-1 rounded">Console</code>, você verá uma mensagem em verde confirmando o sucesso da censura.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção FAQ -->
+        <section id="faq" class="mb-12 scroll-mt-24">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">FAQ - Perguntas Frequentes</h2>
+            <div class="space-y-4 max-w-3xl mx-auto">
+                
+                <details class="bg-white rounded-lg shadow-lg border border-slate-200 group transition-all duration-300 hover:shadow-xl">
+                    <summary class="flex justify-between items-center font-medium text-gray-900 p-4 rounded-lg group-hover:bg-slate-50 transition-colors">
+                        <span>1. O "Censura de Dados" (Botão Mágico) censura dados em todos os widgets do BO?</span>
+                        <i data-lucide="chevron-right" class="chevron text-brand-primary"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-gray-600 prose prose-sm max-w-none">
+                        <p><strong>Resposta:</strong>&nbsp;Não. Para que a ferramenta censure os dados, o widget precisa estar <strong>aberto</strong>. Se o widget for fechado e reaberto, os dados aparecerão sem censura e você precisará clicar no botão mágico novamente.</p>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-lg shadow-lg border border-slate-200 group transition-all duration-300 hover:shadow-xl">
+                    <summary class="flex justify-between items-center font-medium text-gray-900 p-4 rounded-lg group-hover:bg-slate-50 transition-colors">
+                        <span>2. O "Censura Kit Básico" (Snippet) censura fotos de terceiros?</span>
+                        <i data-lucide="chevron-right" class="chevron text-brand-primary"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-gray-600 prose prose-sm max-w-none">
+                        <p><strong>Resposta:</strong>&nbsp;Não. O script censura apenas e-mails do Nubank. Fotos de terceiros ou imagens vexatórias devem ser censuradas <strong>manualmente</strong>.</p>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-lg shadow-lg border border-slate-200 group transition-all duration-300 hover:shadow-xl">
+                    <summary class="flex justify-between items-center font-medium text-gray-900 p-4 rounded-lg group-hover:bg-slate-50 transition-colors">
+                        <span>3. Eu preciso conferir o resultado da censura?</span>
+                        <i data-lucide="chevron-right" class="chevron text-brand-primary"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-gray-600 prose prose-sm max-w-none">
+                        <p><strong>Resposta:</strong>&nbsp;Sim, sempre! A forma mais eficiente é usar <code class="text-sm bg-gray-100 p-1 rounded">Ctrl+F</code> (ou <code class="text-sm bg-gray-100 p-1 rounded">Cmd+F</code>) e pesquisar por <code class="text-sm bg-gray-100 p-1 rounded">@</code> para garantir que nenhum e-mail de terceiro (não-agente) ficou sem censura. Se encontrar algo, censure manually.</p>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Scripts no final do body para garantir carregamento -->
+    <script>
+        // Inicializa os ícones do Lucide DEPOIS que a página carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                console.warn('Lucide icons not loaded, retrying...');
+                // Tenta novamente após um pequeno atraso caso 'defer' não seja suficiente
+                setTimeout(() => {
+                     if (typeof lucide !== 'undefined') {
+                        lucide.createIcons();
+                     } else {
+                        console.error('Failed to load Lucide icons.');
+                     }
+                }, 500);
+            }
+        });
+
+        // --- Lógica para Copiar para a Área de Transferência ---
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-clipboard-target');
+                const codeElement = document.querySelector(targetId);
+                // CORREÇÃO: Usar textContent em vez de innerText para preservar a formatação do código
+                const textToCopy = codeElement.textContent;
+
+                // Usa document.execCommand('copy') para compatibilidade em iframes
+                try {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    textArea.style.position = 'fixed'; // Evita rolagem
+                    textArea.style.opacity = 0;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+
+                    // Feedback visual
+                    // CORREÇÃO: Salva o texto e o ícone ANTES de mudar o innerHTML
+                    const originalTextSpan = button.querySelector('span');
+                    const originalText = originalTextSpan ? originalTextSpan.innerHTML : 'Copiar';
+                    
+                    // CORREÇÃO: O <i> é substituído por <svg> pelo Lucide. Devemos procurar pelo <svg>.
+                    const iconElement = button.querySelector('svg');
+                    // Salva o HTML do ícone. Se não achar (erro no lucide), usa o <i> original como fallback.
+                    const icon = iconElement ? iconElement.outerHTML : '<i data-lucide="clipboard" class="w-4 h-4 mr-1"></i>';
+
+                    button.innerHTML = `<i data-lucide="check" class="w-4 h-4 mr-1"></i> <span class="relative top-0.5">Copiado!</span>`;
+                    
+                    if (typeof lucide !== 'undefined') {
+                        lucide.createIcons(); // Recria o ícone de check
+                    }
+
+                    setTimeout(() => {
+                        // Restaura usando o texto e o ícone salvos
+                        button.innerHTML = `${icon} <span class="relative top-0.5">${originalText}</span>`;
+                        if (typeof lucide !== 'undefined') {
+                             lucide.createIcons(); // Recria o ícone original
+                        }
+                    }, 2000);
+
+                } catch (err) {
+                    console.error('Falha ao copiar:', err);
+                    // Não use alert()
+                    const originalTextSpan = button.querySelector('span');
+                    const originalText = originalTextSpan ? originalTextSpan.innerHTML : 'Copiar';
+                     setTimeout(() => {
+                        if (originalTextSpan) {
+                            originalTextSpan.innerHTML = originalText;
+                        }
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
