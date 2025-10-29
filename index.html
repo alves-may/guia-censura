@@ -349,7 +349,7 @@ if (contador > 0) {
                             <strong>Confira o Resultado:</strong>
                             <div class="bg-blue-50 border border-blue-200 text-blue-900 p-4 rounded-md my-2" role="alert">
                                 <p class="font-bold flex items-center"><i data-lucide="search"></i>Verificação Manual</p>
-                                <p class="mt-1">Sempre confira! Use <code class="text-sm bg-gray-200 p-1 rounded">Cmd+F</code> (ou <code class="text-sm bg-gray-200 p-1 rounded">Ctrl+F</code>) e pesquise por <code class="text-sm bg-gray-200 p-1 rounded">@</code> para garantir que nenhum e-mail de terceiro ficou sem censura. Se encontrar, censure manualmente.</p>
+                                <p class="mt-1">Sempre confira! Use <code class="text-sm bg-gray-200 p-1 rounded">Cmd+F</code> (ou <code class="text-sm bg-gray-200 p-1 rounded">Ctrl+F</code>) e pesquise por <code class="text-sm bg-gray-200 p-1 rounded">@</code> para garantir que nenhum e-mail de terceiro ficou sem censura. Se encontrar, censure manually.</p>
                             </div>
                         </li>
                     </ol>
@@ -399,7 +399,19 @@ if (contador > 0) {
                         <i data-lucide="chevron-right" class="chevron text-brand-primary"></i>
                     </summary>
                     <div class="px-4 pb-4 text-gray-600 prose prose-sm max-w-none">
-                        <p><strong>Resposta:</strong>&nbsp;Sim, sempre! A forma mais eficiente é usar <code class="text-sm bg-gray-100 p-1 rounded">Cmd+F</code> (ou <code class="text-sm bg-gray-100 p-1 rounded">Ctrl+F</code>) e pesquisar por <code class="text-sm bg-gray-100 p-1 rounded">@ ou o dado a ser censurado</code> para garantir que nenhum dado sensível ficou sem censura. Se encontrar algo, censure manualmente.</p>
+                        <p><strong>Resposta:</strong>&nbsp;Sim, sempre! A forma mais eficiente é usar <code class="text-sm bg-gray-100 p-1 rounded">Cmd+F</code> (ou <code class="text-sm bg-gray-100 p-1 rounded">Ctrl+F</code>) e pesquisar por <code class="text-sm bg-gray-100 p-1 rounded">@ ou o dado a ser censurado</code> para garantir que nenhum dado sensível ficou sem censura. Se encontrar algo, censure manually.</p>
+                    </div>
+                </details>
+
+                <!-- NOVA PERGUNTA ADICIONADA AQUI -->
+                <details class="bg-white rounded-lg shadow-lg border border-slate-200 group transition-all duration-300 hover:shadow-xl">
+                    <summary class="flex justify-between items-center font-medium text-gray-900 p-4 rounded-lg group-hover:bg-slate-50 transition-colors">
+                        <span>4. Porque alguns dados não estão sendo censurados? Ex: Dados Bancários, CNPJ e etc.</span>
+                        <i data-lucide="chevron-right" class="chevron text-brand-primary"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-gray-600 prose prose-sm max-w-none">
+                        <p><strong>Resposta:</strong>&nbsp;Os dados que são censurados foram definidos previamente em alinhamento com QA sobre a real necessidade. Dados como Bancários e CNPJ não estão incluídos nessa definição.</p>
+                        <p class="mt-2">Além disso, em raras exceções, alguns números de telefone podem não ser censurados se possuírem uma formatação diferente do padrão brasileiro. Por isso, reiteramos a importância de sempre conferir a censura.</p>
                     </div>
                 </details>
 
@@ -486,5 +498,4 @@ if (contador > 0) {
     </script>
 </body>
 </html>
-
 
