@@ -186,7 +186,7 @@
                             <strong>Instrução Especial para Zendesk:</strong>
                             <div class="bg-red-50 border border-red-200 text-red-900 p-4 rounded-md my-2" role="alert">
                                 <p class="font-bold flex items-center"><i data-lucide="alert-triangle"></i>Atenção no Zendesk</p>
-                                <p class="mt-1">Clique nos <code class="text-sm bg-gray-200 p-1 px-2 rounded inline-flex items-center align-middle"><i data-lucide="more-vertical" class="w-4 h-4 mr-0"></i></code> (três pontos) do e-mail &gt; <code class="text-sm">Imprimir ticket</code>. Quando a janela de impressão do PDF abrir, <strong>feche-a</strong>. Só então clique no botão <code class="text-sm bg-gray-200 p-1 rounded">Censurar Dados</code>. Depois, pode salvar o PDF (Ctrl+P / Cmd+P).</p>
+                                <p class="mt-1">Clique nos <code class="text-sm bg-gray-200 p-1 px-2 rounded inline-flex items-center align-middle"><i data-lucide="more-vertical" class="w-4 h-4 mr-0"></i></code> (três pontos) do e-mail &gt; <code class="text-sm">Imprimir ticket</code>. Quando a janela de impressão do PDF abrir, <strong>feche-a</strong>. Só então clique no favorito <code class="text-sm bg-gray-200 p-1 rounded">Censurar Dados</code>. Depois, pode salvar o PDF (Ctrl+P / Cmd+P).</p>
                             </div>
                         </li>
                         <li><strong>Clique no Favorito:</strong>&nbsp;Clique no botão <code class="text-sm bg-brand-secondary text-brand-dark p-1 rounded font-medium">Censurar Dados</code> na sua barra de favoritos.</li>
@@ -375,21 +375,21 @@ if (contador > 0) {
                 
                 <details class="bg-white rounded-lg shadow-lg border border-slate-200 group transition-all duration-300 hover:shadow-xl">
                     <summary class="flex justify-between items-center font-medium text-gray-900 p-4 rounded-lg group-hover:bg-slate-50 transition-colors">
-                        <span>1. O "Censura de Dados" (Botão Mágico) censura dados em todos os widgets do BO?</span>
+                        <span>1. A Censura de Dados (Favorito) funciona em todos os widgets do BO?</span>
                         <i data-lucide="chevron-right" class="chevron text-brand-primary"></i>
                     </summary>
                     <div class="px-4 pb-4 text-gray-600 prose prose-sm max-w-none">
-                        <p><strong>Resposta:</strong>&nbsp;Não. Para que a ferramenta censure os dados, o widget precisa estar <strong>aberto e visível</strong>. Se o widget for fechado e reaberto, os dados aparecerão sem censura e você precisará clicar no botão mágico novamente.</p>
+                        <p><strong>Resposta:</strong>&nbsp;Sim. No entanto, para que a ferramenta censure os dados, o widget precisa estar <strong>aberto e os dados visíveisl</strong>. Se o widget for fechado e reaberto ou a página atualizada, os dados aparecerão sem censura e você precisará clicar no favorito novamente.</p>
                     </div>
                 </details>
 
                 <details class="bg-white rounded-lg shadow-lg border border-slate-200 group transition-all duration-300 hover:shadow-xl">
                     <summary class="flex justify-between items-center font-medium text-gray-900 p-4 rounded-lg group-hover:bg-slate-50 transition-colors">
-                        <span>2. O "Censura Kit Básico" (Snippet) censura fotos de terceiros?</span>
+                        <span>2. A Censura do Kit Básico" (Snippet) censura fotos de terceiros?</span>
                         <i data-lucide="chevron-right" class="chevron text-brand-primary"></i>
                     </summary>
                     <div class="px-4 pb-4 text-gray-600 prose prose-sm max-w-none">
-                        <p><strong>Resposta:</strong>&nbsp;Não. O script censura apenas e-mails do Nubank. Fotos de terceiros ou imagens vexatórias devem ser censuradas <strong>manualmente</strong>.</p>
+                        <p><strong>Resposta:</strong>&nbsp;Não. A ferramenta censura apenas e-mails do Nubank. Fotos de terceiros ou imagens vexatórias devem ser censuradas <strong>manualmente</strong>.</p>
                     </div>
                 </details>
 
@@ -399,7 +399,7 @@ if (contador > 0) {
                         <i data-lucide="chevron-right" class="chevron text-brand-primary"></i>
                     </summary>
                     <div class="px-4 pb-4 text-gray-600 prose prose-sm max-w-none">
-                        <p><strong>Resposta:</strong>&nbsp;Sim, sempre! A forma mais eficiente é usar <code class="text-sm bg-gray-100 p-1 rounded">Ctrl+F</code> (ou <code class="text-sm bg-gray-100 p-1 rounded">Cmd+F</code>) e pesquisar por <code class="text-sm bg-gray-100 p-1 rounded">@</code> para garantir que nenhum e-mail de terceiro (não-agente) ficou sem censura. Se encontrar algo, censure manualmente.</p>
+                        <p><strong>Resposta:</strong>&nbsp;Sim, sempre! A forma mais eficiente é usar <code class="text-sm bg-gray-100 p-1 rounded">Cmd+F</code> (ou <code class="text-sm bg-gray-100 p-1 rounded">Ctrl+F</code>) e pesquisar por <code class="text-sm bg-gray-100 p-1 rounded">@ ou o dado a ser censurado</code> para garantir que nenhum dado sensível ficou sem censura. Se encontrar algo, censure manualmente.</p>
                     </div>
                 </details>
 
