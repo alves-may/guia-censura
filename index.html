@@ -14,9 +14,9 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        'brand-primary': '#6d28d9', // Roxo
+                        'brand-primary': '#7a00cc', // Novo roxo
                         'brand-secondary': '#ede9fe',
-                        'brand-dark': '#4c1d95',
+                        'brand-dark': '#7a00cc', // Novo roxo
                     }
                 }
             }
@@ -70,16 +70,23 @@
 <body class="bg-slate-50 text-gray-800">
 
     <!-- Navegação Rápida --><nav class="sticky top-0 bg-white/80 backdrop-blur-md shadow-sm z-50 border-b border-gray-200">
-        <div class="container max-w-5xl mx-auto px-4 py-3 flex justify-center items-center space-x-2 sm:space-x-4">
-            <a href="#ferramenta1" class="text-sm sm:text-base font-medium text-gray-600 hover:text-brand-primary transition-all duration-200 flex items-center px-3 py-1 rounded-full hover:bg-slate-100">
-                <i data-lucide="magic-wand-2" class="w-4 h-4 sm:w-auto sm:h-auto"></i> <span class="ml-1 sm:ml-0">Censura de Dados</span>
-            </a>
-            <a href="#ferramenta2" class="text-sm sm:text-base font-medium text-gray-600 hover:text-brand-primary transition-all duration-200 flex items-center px-3 py-1 rounded-full hover:bg-slate-100">
-                <i data-lucide="magic-wand-2" class="w-4 h-4 sm:w-auto sm:h-auto"></i> <span class="ml-1 sm:ml-0">Censura do Kit Básico</span>
-            </a>
-            <a href="#faq" class="text-sm sm:text-base font-medium text-gray-600 hover:text-brand-primary transition-all duration-200 flex items-center px-3 py-1 rounded-full hover:bg-slate-100">
-                <i data-lucide="help-circle" class="w-4 h-4 sm:w-auto sm:h-auto"></i> <span class="ml-1 sm:ml-0">FAQ</span>
-            </a>
+        <div class="container max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            
+            <!-- Logo e Título Lawsuits Defense --><div class="flex items-center space-x-2">
+                <img src="images/logo.png" alt="Lawsuits Defense Logo" class="h-8 w-8 rounded-full"> <!-- Substitua 'src' pela URL da sua logo --><span class="text-lg font-semibold text-gray-800">Lawsuits Defense</span>
+            </div>
+
+            <!-- Botões de Navegação --><div class="flex items-center space-x-2 sm:space-x-4">
+                <a href="#ferramenta1" class="text-sm sm:text-base font-medium text-gray-600 hover:text-brand-primary transition-all duration-200 flex items-center px-3 py-1 rounded-full hover:bg-slate-100">
+                    <i data-lucide="magic-wand-2" class="w-4 h-4 sm:w-auto sm:h-auto"></i> <span class="ml-1 sm:ml-0">Censura de Dados</span>
+                </a>
+                <a href="#ferramenta2" class="text-sm sm:text-base font-medium text-gray-600 hover:text-brand-primary transition-all duration-200 flex items-center px-3 py-1 rounded-full hover:bg-slate-100">
+                    <i data-lucide="magic-wand-2" class="w-4 h-4 sm:w-auto sm:h-auto"></i> <span class="ml-1 sm:ml-0">Censura do Kit Básico</span>
+                </a>
+                <a href="#faq" class="text-sm sm:text-base font-medium text-gray-600 hover:text-brand-primary transition-all duration-200 flex items-center px-3 py-1 rounded-full hover:bg-slate-100">
+                    <i data-lucide="help-circle" class="w-4 h-4 sm:w-auto sm:h-auto"></i> <span class="ml-1 sm:ml-0">FAQ</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -299,7 +306,7 @@ if (contador > 0) {
 
                     <ol class="list-decimal list-outside space-y-4 text-gray-700 pl-5">
                         <li><strong>Carregue a Página:</strong>&nbsp;Vá para a página de pré-visualização do Kit Básico.</li>
-                        <li><strong>Abra o Inspecionar:</strong>&nbsp;Clique com o botão direito na página e escolha <code class="text-sm bg-gray-100 p-1 rounded">Inspecionar</code>.<q></q></li>
+                        <li><strong>Abra o Inspecionar:</strong>&nbsp;Clique com o botão direito na página e escolha <code class="text-sm bg-gray-100 p-1 rounded">Inspecionar</code>.</li>
                         <li>
                             <strong>Abra o Menu de Comando:</strong>
                             <p class="mt-1">Pressione <code class="text-sm bg-gray-100 p-1 rounded">Cmd + Shift + P</code> (Mac) ou <code class="text-sm bg-gray-100 p-1 rounded">Ctrl + Shift + P</code> (Windows).</p>
@@ -465,4 +472,5 @@ if (contador > 0) {
     </script>
 </body>
 </html>
+
 
